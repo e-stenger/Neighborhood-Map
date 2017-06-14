@@ -1,0 +1,31 @@
+html, body {
+	height  : 100%;
+	margin  : 0;
+	padding : 0;
+}
+
+#hide-markers,
+#show-markers {
+	width : 48%;
+}
+
+#map {
+	position : absolute;
+	right    : 0px;
+	bottom   : 0px;
+	left     : 362px;
+
+	height   : 100%;
+}
+
+.options-box {
+	height        : 100%;
+	width         : 200px;
+	padding       : 10px 10px 30px 10px;
+
+	background    : #fff;
+	line-height   : 35px;
+	text-align    : center;
+	border        : 2px solid #999;
+	border-radius : 3px;
+}
