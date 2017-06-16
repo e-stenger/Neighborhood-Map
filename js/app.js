@@ -1,9 +1,19 @@
+// open and close sideNav when explore button is clicked from hamburger menu notes Udacity
+      var menu = document.querySelector('#menu');
+      var main = document.querySelector('main');
+      var drawer = document.querySelector('.nav');
+
+      main.addEventListener('click', function() {
+        drawer.classList.toggle('open');
+      });
+
+
 var map;
 var markers = [];
 
 function initMap() {
 	    map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 29.977381, lng: 31.133162},
+        center: {lat: 29.975250, lng: 31.131500},
         zoom: 16,
         mapTypeId: 'satellite',
         mapTypeControl: false
@@ -27,10 +37,10 @@ var locations = [
        ];
 
        //style the markers this will be marker icon
-       var defaultIcon = makeMarkerIcon('0091ff');
+       var defaultIcon = makeMarkerIcon('ffffff');
 
        // create a highlighted location when mouseover
-       var highlightedIcon = makeMarkerIcon('FFFF24');
+       var highlightedIcon = makeMarkerIcon('FFFF00');
 
        // uses location array to create markers on initialize
        for (var i = 0; i < locations.length; i++) {
@@ -43,7 +53,7 @@ var locations = [
             position: position,
             title: title,
             icon: defaultIcon,
-            animation: google.maps.Animation.BOUNCE, id: i
+            animation: google.maps.Animation.DROP, id: i
           });
 
           // push the marker to array of markers
@@ -61,8 +71,8 @@ var locations = [
           });
           }
 
-       document.getElementById('show-markers').addEventListener('click', showMarkers);
-       document.getElementById('hide-markers').addEventListener('click', hideMarkers);
+       //document.getElementById('show-markers').addEventListener('click', showMarkers);
+       //document.getElementById('hide-markers').addEventListener('click', hideMarkers);
 
 
        function showMarkers() {

@@ -3,21 +3,31 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="css/style.css" rel="stylesheet" type="text/css"></link>
 		<title>Udacity Map Project</title>
 	</head>
 	<body>
-		<div class="container">
-			<div class="options-box">
-				<h2>Virtual Tour of Giza</h2>
-				<div>
-					<input id="show-markers" type="button" value="Show Markers">
-					<input id="hide-markers" type="button" value="Hide Markers">
+		<nav id="sideNav" class="nav">
+
+
+
+
+
+		</nav>
+	<main>
+			<div id="header">
+				<h1>Virtual Tour of Giza</h1>
+				<a id="menu">
+				<button>EXPLORE HERE</button>
+				</a>
 				</div>
+				
 				<div id="map"></div>
+	</main>
 				<script src="js/knockout-3.4.2.js"></script>
 				<script src="js/app.js"></script>
 				<script async defer
-				src="https://maps.googleapis.com/maps/api/js?libraries=geometry,drawing&key=AIzaSyCSUIf04mJlQvO6Z7u-KPuQBTMlkxCUv-M&v=3&callback=initMap">
+				src="https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyCSUIf04mJlQvO6Z7u-KPuQBTMlkxCUv-M&v=3&callback=initMap">
 				</script>
 			</body>
 		</html>
