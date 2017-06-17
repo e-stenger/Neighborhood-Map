@@ -8,26 +8,28 @@
 	</head>
 	<body>
 		<nav id="sideNav" class="nav">
-
-
-
-
-
-		</nav>
-	<main>
-			<div id="header">
-				<h1>Virtual Tour of Giza</h1>
-				<a id="menu">
-				<button>EXPLORE HERE</button>
-				</a>
-				</div>
+			<section id="list">
+				<!--search box code goes here-->
 				
-				<div id="map"></div>
-	</main>
-				<script src="js/knockout-3.4.2.js"></script>
-				<script src="js/app.js"></script>
-				<script async defer
-				src="https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyCSUIf04mJlQvO6Z7u-KPuQBTMlkxCUv-M&v=3&callback=initMap">
-				</script>
-			</body>
-		</html>
+			</section>
+			<ul data-bind="foreach: locationList">
+				<li id="list-item" data-bind="text: title, click: markerClick"></li>
+			</ul>
+		</nav>
+		<main>
+		<div id="header">
+			<h1>Virtual Tour of Giza</h1>
+			<a id="menu">
+				<button>EXPLORE HERE</button>
+			</a>
+		</div>
+		
+		<div id="map"></div>
+		</main>
+		<script src="js/knockout-3.4.2.js"></script>
+		<script src="js/app.js"></script>
+		<script async defer
+		src="https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyCSUIf04mJlQvO6Z7u-KPuQBTMlkxCUv-M&v=3&callback=initMap">
+		</script>
+	</body>
+</html>

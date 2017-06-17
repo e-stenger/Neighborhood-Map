@@ -41,31 +41,26 @@ button:active {
 
 #sideNav {
   display: inline;
-  max-width: 300px;
+  max-width: 250px;
   min-width: 150px;
 }
 
 nav {
   display: flex-wrap;
-  width: 300px;
+  width: 250px;
   z-index: +1;
   height: 100%;
   position: absolute;
-  -webkit-transform: translate(-325px, 0);
-  transform: translate(-325px, 0);
-  transition: transform 0.3s ease;
+  -webkit-transform: translate(-300px, 0);
+  transform: translate(-300px, 0);
+  transition: transform 0.5s ease;
 }
 
 nav.open {
   -webkit-transform: translate(0, 0);
   transform: translate(0, 0);
-  width:40%;
+  width:35%;
 }
-
-
-
-
-
 
 #map {
 	display: block;
