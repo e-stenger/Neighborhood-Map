@@ -8,9 +8,8 @@
 	</head>
 	<body>
 		<nav id="sideNav" class="nav">
-			<section id="list">
-				<!--search box code goes here-->
-				
+			<section id="search">
+				<input id="new-search" placeholder="Search" data-bind="textInput: userInput, event: {keyup: searchMarkers}">
 			</section>
 			<ul data-bind="foreach: locationList">
 				<li id="list-item" data-bind="text: title, click: markerClick"></li>
@@ -29,7 +28,7 @@
 		<script src="js/knockout-3.4.2.js"></script>
 		<script src="js/app.js"></script>
 		<script async defer
-		src="https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyCSUIf04mJlQvO6Z7u-KPuQBTMlkxCUv-M&v=3&callback=initMap">
+		src="https://maps.googleapis.com/maps/api/js?libraries=geometry&places&key=AIzaSyCSUIf04mJlQvO6Z7u-KPuQBTMlkxCUv-M&v=3&callback=initMap"onerror="mapError()">
 		</script>
 	</body>
 </html>

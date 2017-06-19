@@ -70,3 +70,19 @@ nav.open {
 	height   : 800px;
 }
 
+ul {
+	width: 100%;
+	padding: 2px;
+}
+
+#search {
+	padding-left: 30px;
+	padding-top: 30px;
+}
+
+#list-item {
+	margin-left: 10px;
+	font-size: 20px;
+	color: white;
+	padding-bottom: 10px;
+}
