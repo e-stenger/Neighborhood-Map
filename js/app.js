@@ -8,94 +8,68 @@ main.addEventListener('click', function() {
 // locations array, list of sites
 var sites = [{
         title: 'Giza Pyramids Ticket Office and Entrance',
-        location: {
-            lat: 29.981907,
-            lng: 31.132551
-        }
+        lat: "29.981907",
+        lng: "31.132551"
     },
     {
         title: 'The Great Pyramid at Giza',
-        location: {
-            lat: 29.979245,
-            lng: 31.1342000
-        }
+        lat: "29.979245",
+        lng: "31.1342000"
     },
     {
         title: 'Pyramid of Khafre',
-        location: {
-            lat: 29.976000,
-            lng: 31.130784
-        }
+        lat: "29.976000",
+        lng: "31.130784"
     },
     {
         title: 'Great Sphinx of Giza',
-        location: {
-            lat: 29.975300,
-            lng: 31.137604
-        }
+        lat: "29.975300",
+        lng: "31.137604"
     },
     {
         title: 'Pyramid of Hetepheres I',
-        location: {
-            lat: 29.978900,
-            lng: 31.136229
-        }
+        lat: "29.978900",
+        lng: "31.136229"
     },
     {
         title: 'Khufu Ship',
-        location: {
-            lat: 29.978000,
-            lng: 31.134623
-        }
+        lat: "29.978000",
+        lng: "31.134623"
     },
     {
         title: 'Giza Necropolis',
-        location: {
-            lat: 29.977311,
-            lng: 31.132520
-        }
+        lat: "29.977311",
+        lng: "31.132520"
     },
     {
         title: 'Tomb of Hemiunu',
-        location: {
-            lat: 29.979366,
-            lng: 31.129901
-        }
+        lat: "29.979366",
+        lng: "31.129901"
     },
     {
         title: 'Mortuary Temple of Khufu',
-        location: {
-            lat: 29.979260,
-            lng: 31.135675
-        }
+        lat: "29.979260",
+        lng: "31.135675"
     },
     {
         title: 'Rock Cut Tombs',
-        location: {
-            lat: 29.977248,
-            lng: 31.129331
-        }
+        lat: "29.977248",
+        lng: "31.129331"
     },
     {
         title: 'Valley Temple of Khafre',
-        location: {
-            lat: 29.974790,
-            lng: 31.138358
-        }
+        lat: "29.974790",
+        lng: "31.138358"
     },
     {
         title: 'Pyramid of Mankaure',
-        location: {
-            lat: 29.972675,
-            lng: 31.128523
-        }
+        lat: "29.972675",
+        lng: "31.128523"
     },
     {
         title: 'Pyramids of Queens',
-        location: {
-            lat: 29.971573,
-            lng: 31.127991
-        }
+        lat: "29.971573",
+        lng: "31.127991"
     }
 ];
 var Location = function(data) {
@@ -139,10 +113,9 @@ var ViewModel = function() {
     //toggleBounce, handleThis, markerClick function credit documentation and forum (modified)
     var toggleBounce = function(marker) {
         marker.setAnimation(google.maps.Animation.BOUNCE);
-        setTimeout(function() {marker.setAnimation(null);
-        }, 1600);
-    setLocation(marker);
-};
+        setTimeout(function() {marker.setAnimation(null); }, 1600);
+        setLocation(marker);
+    };
 var lastInfoWindow = null;
 this.handleThis = function(marker, infoWindow) {
     return function() {
@@ -173,12 +146,12 @@ self.allSites.forEach(function(site) {
                 position: latLng
             };
             var createMarkers = function() {
-                site.marker = new google.maps.Marker(markerOptions);
-                site.infoWindow = new google.maps.InfoWindow({
+                place.marker = new google.maps.Marker(markerOptions);
+                place.infoWindow = new google.maps.InfoWindow({
                     display: '<h1' + site.title + '<h1>'
                 });
                 //listener opens infowindow and animates marker
-                google.maps.event.addListener(site.marker, 'click', handleThis(site.marker, site.infoWindow));
+                google.maps.event.addListener(location.marker, 'click', handleThis(location.marker, location.infoWindow));
             };
 
 //search filter
@@ -187,13 +160,13 @@ self.searchMarkers = function() {
     var searchInput = self.userInput().toLowerCase();
     self.locationList.removeAll();
     self.allSites.forEach(function(site) {
-        site.marker.setVisible(false);
+        location.marker.setVisible(false);
         if(site.title.toLowerCase().indexOf(searchInput) !== -1) {
             self.locationList.push(site);
         }
 });
     self.locationList().forEach(function(site) {
-        site.marker.setVisible(true);
+        location.marker.setVisible(true);
     });
 };
 function Site(data) {
