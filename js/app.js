@@ -95,7 +95,7 @@ function initMap() {
         mapTypeId: 'satellite',
         mapTypeControl: false
     });
-    ko.applyBindings(ViewModel());
+    ko.applyBindings(new ViewModel());
 }
 //viewmodel
 var ViewModel = function() {
@@ -140,11 +140,11 @@ this.markerClick = function(location) {
 };
 //create marker and infowindow
 self.allSites.forEach(function(site) {
-            latLng = new google.maps.LatLng(site.lat, site.lng);
-            var markerOptions = {
+            LatLng = new google.maps.LatLng(site.lat, site.lng);
+            var marker = new google.maps.Marker({
                 map: map,
-                position: latLng
-            };
+                position: LatLng
+            });
             var createMarkers = function() {
                 place.marker = new google.maps.Marker(markerOptions);
                 place.infoWindow = new google.maps.InfoWindow({

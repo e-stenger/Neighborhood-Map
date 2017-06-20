@@ -12,7 +12,7 @@
 				<input id="new-search" placeholder="Search" data-bind="textInput: userInput, event: {keyup: searchMarkers}">
 			</section>
 			<ul data-bind="foreach: locationList">
-				<li id="list-item" data-bind="text: title, click: markerClick"></li>
+				<li id="list-item" data-bind="text: title, click: $root.markerClick"></li>
 			</ul>
 		</nav>
 		<main>
