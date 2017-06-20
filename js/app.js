@@ -136,7 +136,7 @@ this.handleThis = function(marker, infoWindow) {
 };
 // markerClick ties list item to cooresponding marker
 this.markerClick = function(location) {
-    google.maps.event.trigger(location.marker, 'click');
+    google.maps.event.trigger(location.marker);
 };
 //create marker and infowindow
 self.allSites.forEach(function(site) {
