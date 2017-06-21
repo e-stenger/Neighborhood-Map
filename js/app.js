@@ -136,18 +136,22 @@ this.handleThis = function(marker, infoWindow) {
 };
 // markerClick ties list item to cooresponding marker
 this.markerClick = function(location) {
-    google.maps.event.trigger(location.marker);
+    google.maps.event.trigger(location.marker, 'click');
+    };
 };
+
+
 //create marker and infowindow
 self.allSites.forEach(function(site) {
-            LatLng = new google.maps.LatLng(site.lat, site.lng);
-            var marker = new google.maps.Marker({
+            latLng = new google.maps.LatLng(sites.lat, sites.lng);
+            var markerOptions = {
                 map: map,
                 position: LatLng
-            });
+            };
+
             var createMarkers = function() {
-                place.marker = new google.maps.Marker(markerOptions);
-                place.infoWindow = new google.maps.InfoWindow({
+                site.marker = new google.maps.Marker(markerOptions);
+                site.infoWindow = new google.maps.InfoWindow({
                     display: '<h1' + site.title + '<h1>'
                 });
                 //listener opens infowindow and animates marker
@@ -180,4 +184,4 @@ this.setLocation = function(site) {
     self.currentLocation(site);
 };
 });
-};
+

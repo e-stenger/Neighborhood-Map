@@ -49,7 +49,7 @@ button:active {
 	display   : inline;
 
 	min-width : 150px;
-	max-width : 250px;
+	max-width : 300px;
 }
 
 nav {
@@ -58,15 +58,15 @@ nav {
 	z-index           : +1;
 
 	height            : 100%;
-	width             : 250px;
+	width             : 300px;
 
 	transition        : transform 0.5s ease;
-	-webkit-transform : translate(-300px, 0);
-	transform         : translate(-300px, 0);
+	-webkit-transform : translate(-310px, 0);
+	transform         : translate(-310px, 0);
 }
 
 nav.open {
-	width             : 35%;
+	width             : 40%;
 
 	-webkit-transform : translate(0, 0);
 	transform         : translate(0, 0);
@@ -94,7 +94,7 @@ ul {
 #list-item {
 	margin-left    : 10px;
 	padding-bottom : 10px;
-
+	background-color: #000;
 	font-size      : 20px;
 	color          : white;
 }
