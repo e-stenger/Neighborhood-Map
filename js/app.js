@@ -135,18 +135,16 @@ this.handleThis = function(marker, infoWindow) {
     };
 };
 // markerClick ties list item to cooresponding marker
-this.markerClick = function(location) {
+self.markerClick = function(location) {
     google.maps.event.trigger(location.marker, 'click');
     };
-};
-
 
 //create marker and infowindow
 self.allSites.forEach(function(site) {
             latLng = new google.maps.LatLng(sites.lat, sites.lng);
             var markerOptions = {
                 map: map,
-                position: LatLng
+                position: latLng
             };
 
             var createMarkers = function() {
@@ -156,7 +154,7 @@ self.allSites.forEach(function(site) {
                 });
                 //listener opens infowindow and animates marker
                 google.maps.event.addListener(location.marker, 'click', handleThis(location.marker, location.infoWindow));
-            };
+            }
 
 //search filter
 self.userInput = ko.observable('');
@@ -184,4 +182,5 @@ this.setLocation = function(site) {
     self.currentLocation(site);
 };
 });
+};
 
