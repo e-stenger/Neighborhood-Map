@@ -114,10 +114,10 @@ var ViewModel = function() {
     var toggleBounce = function(marker) {
         marker.setAnimation(google.maps.Animation.BOUNCE);
         setTimeout(function() {marker.setAnimation(null); }, 1600);
-        setLocation(marker);
+        self.setLocation(marker);
     };
 var lastInfoWindow = null;
-this.handleThis = function(marker, infoWindow) {
+self.handleThis = function(marker, infoWindow) {
     return function() {
         if (lastInfoWindow === infoWindow) {
             toggleBounce(marker);
@@ -141,10 +141,9 @@ self.markerClick = function(location) {
 
 //create marker and infowindow
 self.allSites.forEach(function(site) {
-            latLng = new google.maps.LatLng(sites.lat, sites.lng);
             var markerOptions = {
                 map: map,
-                position: latLng
+                position: {lat: parseFloat(site.lat),lng: parseFloat(site.lng)}
             };
 
             var createMarkers = function() {
@@ -153,8 +152,9 @@ self.allSites.forEach(function(site) {
                     display: '<h1' + site.title + '<h1>'
                 });
                 //listener opens infowindow and animates marker
-                google.maps.event.addListener(location.marker, 'click', handleThis(location.marker, location.infoWindow));
-            }
+                google.maps.event.addListener(site.marker, 'click', self.handleThis(site.marker, site.infoWindow));
+            };
+            createMarkers();
 
 //search filter
 self.userInput = ko.observable('');
