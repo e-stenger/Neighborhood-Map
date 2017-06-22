@@ -114,7 +114,6 @@ var ViewModel = function() {
     var toggleBounce = function(marker) {
         marker.setAnimation(google.maps.Animation.BOUNCE);
         setTimeout(function() {marker.setAnimation(null); }, 1600);
-        self.setLocation(marker);
     };
 var lastInfoWindow = null;
 self.handleThis = function(marker, infoWindow) {
@@ -149,7 +148,8 @@ self.allSites.forEach(function(site) {
             var createMarkers = function() {
                 site.marker = new google.maps.Marker(markerOptions);
                 site.infoWindow = new google.maps.InfoWindow({
-                    display: '<h1' + site.title + '<h1>'
+                    content: '<h2>' + site.title + '<h2>',
+                    
                 });
                 //listener opens infowindow and animates marker
                 google.maps.event.addListener(site.marker, 'click', self.handleThis(site.marker, site.infoWindow));

@@ -6,9 +6,14 @@ html, body {
 
 h1 {
 	margin      : 0px 0 10px 0;
-	padding-top : 10px;
+	paddingtop : 10px;
 
 	color       : white;
+}
+
+h2 {
+	margin      : 0px 0 10px 0;
+	paddingtop : 10px;
 }
 
 #header {
