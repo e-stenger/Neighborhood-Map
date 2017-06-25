@@ -111,6 +111,13 @@ function initMap() {
     });
     ko.applyBindings(new ViewModel());
 }
+
+//var foursquareURL = ""
+
+//foursquare api info
+clientID = "M5AMWSRULFRYVIAV11A40HE1DYOLQBULFQHFR1X1HJUH1UII";
+clientSecret = "WHYWWD30H2V0Z4SN5PEBLMY4MN0QL0SO3ETSWIMFBP225WI0";
+
 //viewmodel
 var ViewModel = function() {
     var self = this;
@@ -162,8 +169,7 @@ self.allSites.forEach(function(site) {
             var createMarkers = function() {
                 site.marker = new google.maps.Marker(markerOptions);
                 site.infoWindow = new google.maps.InfoWindow({
-                    content: '<h2>' + site.title + '<h2>' + '<a href>' + site.url + '</a>'
-                    
+                    content: '<h2>' + site.title + '<h2>' + '<a href=link.site.url>' + site.url + '</a>'
                 });
                 //listener opens infowindow and animates marker
                 google.maps.event.addListener(site.marker, 'click', self.handleThis(site.marker, site.infoWindow));
