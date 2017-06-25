@@ -16,6 +16,12 @@ h2 {
 	paddingtop : 10px;
 }
 
+h6 {
+	margin      : 0px 0 10px 0;
+	paddingtop : 10px;
+	
+}
+
 #header {
 	height           : 100px;
 	width            : 100%;

@@ -9,73 +9,87 @@ main.addEventListener('click', function() {
 var sites = [{
         title: 'Giza Pyramids Ticket Office and Entrance',
         lat: "29.981907",
-        lng: "31.132551"
+        lng: "31.132551",
+        url: "https://en.wikipedia.org/wiki/Giza_pyramid_complex"
     },
     {
         title: 'The Great Pyramid at Giza',
         lat: "29.979245",
-        lng: "31.1342000"
+        lng: "31.1342000",
+        url: "https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza"
     },
     {
         title: 'Pyramid of Khafre',
         lat: "29.976000",
-        lng: "31.130784"
+        lng: "31.130784",
+        url: "https://en.wikipedia.org/wiki/Pyramid_of_Khafre"
     },
     {
         title: 'Great Sphinx of Giza',
         lat: "29.975300",
-        lng: "31.137604"
+        lng: "31.137604",
+        url: "https://en.wikipedia.org/wiki/Great_Sphinx_of_Giza"
     },
     {
         title: 'Pyramid of Hetepheres I',
         lat: "29.978900",
-        lng: "31.136229"
+        lng: "31.136229",
+        url: "https://en.wikipedia.org/wiki/Hetepheres_I"
     },
     {
         title: 'Khufu Ship',
         lat: "29.978000",
-        lng: "31.134623"
+        lng: "31.134623",
+        url: "https://en.wikipedia.org/wiki/Khufu_ship"
     },
     {
         title: 'Giza Necropolis',
         lat: "29.977311",
-        lng: "31.132520"
+        lng: "31.132520",
+        url: "https://simple.wikipedia.org/wiki/Giza_Necropolis"
     },
     {
         title: 'Tomb of Hemiunu',
         lat: "29.979366",
-        lng: "31.129901"
+        lng: "31.129901",
+        url: "https://en.wikipedia.org/wiki/Hemiunu"
     },
     {
         title: 'Mortuary Temple of Khufu',
         lat: "29.979260",
-        lng: "31.135675"
+        lng: "31.135675",
+        url: "https://en.wikipedia.org/wiki/Mortuary_temple"
     },
     {
         title: 'Rock Cut Tombs',
         lat: "29.977248",
-        lng: "31.129331"
+        lng: "31.129331",
+        url: "https://en.wikipedia.org/wiki/Rock-cut_tomb"
     },
     {
         title: 'Valley Temple of Khafre',
         lat: "29.974790",
-        lng: "31.138358"
+        lng: "31.138358",
+        url: "https://sv.m.wikipedia.org/wiki/Valley_Temple_of_Khafre"
     },
     {
-        title: 'Pyramid of Mankaure',
+        title: 'Pyramid of Menkaure',
         lat: "29.972675",
-        lng: "31.128523"
+        lng: "31.128523",
+        url: "https://en.wikipedia.org/wiki/Pyramid_of_Menkaure"
     },
     {
         title: 'Pyramids of Queens',
         lat: "29.971573",
-        lng: "31.127991"
+        lng: "31.127991",
+        url: "https://sv.wikipedia.org/wiki/Pyramids_of_Queens"
     }
 ];
 var Location = function(data) {
     this.title = data.title;
     this.lat = data.lat;
     this.lng = data.lng;
+    this.url = data.url;
     this.marker = data.marker;
 };
 //init map
@@ -148,13 +162,13 @@ self.allSites.forEach(function(site) {
             var createMarkers = function() {
                 site.marker = new google.maps.Marker(markerOptions);
                 site.infoWindow = new google.maps.InfoWindow({
-                    content: '<h2>' + site.title + '<h2>',
+                    content: '<h2>' + site.title + '<h2>' + '<h6>' + site.url + '</h6>'
                     
                 });
                 //listener opens infowindow and animates marker
                 google.maps.event.addListener(site.marker, 'click', self.handleThis(site.marker, site.infoWindow));
             };
-            createMarkers();
+            createMarkers()
 
 //search filter
 self.userInput = ko.observable('');
