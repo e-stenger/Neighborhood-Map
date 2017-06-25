@@ -156,13 +156,13 @@ self.markerClick = function(location) {
 self.allSites.forEach(function(site) {
             var markerOptions = {
                 map: map,
-                position: {lat: parseFloat(site.lat),lng: parseFloat(site.lng)}
+                position: {lat: parseFloat(site.lat),lng: parseFloat(site.lng)},
             };
 
             var createMarkers = function() {
                 site.marker = new google.maps.Marker(markerOptions);
                 site.infoWindow = new google.maps.InfoWindow({
-                    content: '<h2>' + site.title + '<h2>' + '<h6>' + site.url + '</h6>'
+                    content: '<h2>' + site.title + '<h2>' + '<a href>' + site.url + '</a>'
                     
                 });
                 //listener opens infowindow and animates marker
@@ -189,6 +189,7 @@ function Site(data) {
     this.title = data.title;
     this.lat = data.lat;
     this.lng = data.lng;
+    this.url = data.url;
     this.marker = null;
 }
 this.currentLocation = ko.observable();
