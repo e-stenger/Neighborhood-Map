@@ -112,12 +112,6 @@ function initMap() {
     ko.applyBindings(new ViewModel());
 }
 
-//var foursquareURL = ""
-
-//foursquare api info
-clientID = "M5AMWSRULFRYVIAV11A40HE1DYOLQBULFQHFR1X1HJUH1UII";
-clientSecret = "WHYWWD30H2V0Z4SN5PEBLMY4MN0QL0SO3ETSWIMFBP225WI0";
-
 //viewmodel
 var ViewModel = function() {
     var self = this;
@@ -164,17 +158,40 @@ self.allSites.forEach(function(site) {
             var markerOptions = {
                 map: map,
                 position: {lat: parseFloat(site.lat),lng: parseFloat(site.lng)},
+                
             };
 
             var createMarkers = function() {
                 site.marker = new google.maps.Marker(markerOptions);
                 site.infoWindow = new google.maps.InfoWindow({
-                    content: '<h2>' + site.title + '<h2>' + '<a href=link.site.url>' + site.url + '</a>'
-                });
+                    content: '<h2>' + site.title + '<h2>' + '<div>'+ photo + '</div>' + '<a href="#"=' + site.url + '</a>'
+                }); 
                 //listener opens infowindow and animates marker
                 google.maps.event.addListener(site.marker, 'click', self.handleThis(site.marker, site.infoWindow));
-            };
+            }
             createMarkers()
+            
+// foursquare api info - trying to get working from forum post modified
+var foursquareURL = "https://api.foursquare.com/v2/venues/" + this.title + "/photos?&client_id=M5AMWSRULFRYVIAV11A40HE1DYOLQBULFQHFR1X1HJUH1UII&client_secret=WHYWWD30H2V0Z4SN5PEBLMY4MN0QL0SO3ETSWIMFBP225WI0";
+var photo = [];
+
+function foursquarePhotos () {
+    $.ajax({
+        url: data.url,
+        dataType: "jsonp",
+        success: function (data) {
+            var photos = data[5];
+            var photoUrl = 'prefix' + '200x200' + 'suffix';
+            photo = ('<img class="siteimage" src="' + photoUrl + '">');
+        }
+        //async: true,
+    });
+            infowindow.setContent('<div>' + site.title + '</div>' + '<div>' + photo + '</div>');
+            infowindow.open(map, marker);
+
+}
+foursquarePhotos();
+
 
 //search filter
 self.userInput = ko.observable('');
