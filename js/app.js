@@ -107,7 +107,7 @@ function initMap() {
         },
         zoom: 16,
         mapTypeId: 'satellite',
-        mapTypeControl: false
+        mapTypeControl: false,
     });
     ko.applyBindings(new ViewModel());
 }
@@ -164,32 +164,35 @@ self.allSites.forEach(function(site) {
             var createMarkers = function() {
                 site.marker = new google.maps.Marker(markerOptions);
                 site.infoWindow = new google.maps.InfoWindow({
-                    content: '<h2>' + site.title + '<h2>' + '<div>'+ photo + '</div>' + '<a href="#"=' + site.url + '</a>'
+                    content: '<h2>' + site.title + '</h2>'
                 }); 
                 //listener opens infowindow and animates marker
                 google.maps.event.addListener(site.marker, 'click', self.handleThis(site.marker, site.infoWindow));
             }
+
             createMarkers()
-            
+
 // foursquare api info - trying to get working from forum post modified
-var foursquareURL = "https://api.foursquare.com/v2/venues/" + this.title + "/photos?&client_id=M5AMWSRULFRYVIAV11A40HE1DYOLQBULFQHFR1X1HJUH1UII&client_secret=WHYWWD30H2V0Z4SN5PEBLMY4MN0QL0SO3ETSWIMFBP225WI0";
+var foursquareURL = "https://api.foursquare.com/v2/venues/4b9f7a50f964a520422537e3/photos?&client_id=M5AMWSRULFRYVIAV11A40HE1DYOLQBULFQHFR1X1HJUH1UII&client_secret=WHYWWD30H2V0Z4SN5PEBLMY4MN0QL0SO3ETSWIMFBP225WI0&v=20170620&m=foursquare";
 var photo = [];
+
 
 function foursquarePhotos () {
     $.ajax({
-        url: data.url,
+        async: true,
+        url: foursquareURL,
         dataType: "jsonp",
-        success: function (data) {
-            var photos = data[5];
+        success: function (response) {
+            console.log(response);
+            var photos = response[5];
             var photoUrl = 'prefix' + '200x200' + 'suffix';
             photo = ('<img class="siteimage" src="' + photoUrl + '">');
         }
-        //async: true,
+    
     });
-            infowindow.setContent('<div>' + site.title + '</div>' + '<div>' + photo + '</div>');
-            infowindow.open(map, marker);
-
-}
+    
+        
+ }
 foursquarePhotos();
 
 
