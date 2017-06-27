@@ -164,7 +164,7 @@ self.allSites.forEach(function(site) {
             var createMarkers = function() {
                 site.marker = new google.maps.Marker(markerOptions);
                 site.infoWindow = new google.maps.InfoWindow({
-                    content: '<h2>' + site.title + '</h2>'
+                    content: '<h2>' + site.title + '</h2>' + '<a href="' + site.url + '" target="_blank">' + site.url + '</a>'
                 }); 
                 //listener opens infowindow and animates marker
                 google.maps.event.addListener(site.marker, 'click', self.handleThis(site.marker, site.infoWindow));
@@ -184,7 +184,7 @@ function foursquarePhotos () {
         dataType: "jsonp",
         success: function (response) {
             console.log(response);
-            var photos = response[5];
+            var photos = response[30];
             var photoUrl = 'prefix' + '200x200' + 'suffix';
             photo = ('<img class="siteimage" src="' + photoUrl + '">');
         }
