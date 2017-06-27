@@ -124,7 +124,7 @@ var ViewModel = function() {
     self.locationList = ko.observableArray([]);
     sites.forEach(function(site) {
         self.locationList.push(site);
-        console.log(site);
+        //console.log(site);
     });
     //toggleBounce, handleThis, markerClick function credit documentation and forum (modified)
     var toggleBounce = function(marker) { 
@@ -185,10 +185,10 @@ function foursquarePhotos () {
         url: foursquareURL,
         dataType: "jsonp",
         success: function (response) {
-            console.log(response);
-            var photos = response[30];
-            var photoUrl = 'prefix' + '200x200' + 'suffix';
-            photo = ('<img class="siteimage" src="' + photoUrl + '">');
+            //console.log(response);
+            var photos = response.response.photos;
+            var photo = photos.items[0];
+            //photo = ('<img class="siteimage" src="' + photoUrl + '">');
         }
     
     });
