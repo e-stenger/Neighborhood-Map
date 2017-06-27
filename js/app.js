@@ -102,10 +102,10 @@ var mapError = function() {
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: {
-            lat: 29.975250,
-            lng: 31.131500
+            lat: 29.972000,
+            lng: 31.133000
         },
-        zoom: 16,
+        zoom: 15,
         mapTypeId: 'satellite',
         mapTypeControl: false,
     });
@@ -124,12 +124,14 @@ var ViewModel = function() {
     self.locationList = ko.observableArray([]);
     sites.forEach(function(site) {
         self.locationList.push(site);
+        console.log(site);
     });
     //toggleBounce, handleThis, markerClick function credit documentation and forum (modified)
-    var toggleBounce = function(marker) {
+    var toggleBounce = function(marker) { 
         marker.setAnimation(google.maps.Animation.BOUNCE);
-        setTimeout(function() {marker.setAnimation(null); }, 1600);
+        setTimeout(function() {marker.setAnimation(null); }, 1500);
     };
+
 var lastInfoWindow = null;
 self.handleThis = function(marker, infoWindow) {
     return function() {
@@ -146,6 +148,7 @@ self.handleThis = function(marker, infoWindow) {
             infoWindow.open(map, this);
             lastInfoWindow = infoWindow;
         }
+
     };
 };
 // markerClick ties list item to cooresponding marker
@@ -158,24 +161,23 @@ self.allSites.forEach(function(site) {
             var markerOptions = {
                 map: map,
                 position: {lat: parseFloat(site.lat),lng: parseFloat(site.lng)},
-                
             };
 
             var createMarkers = function() {
                 site.marker = new google.maps.Marker(markerOptions);
-                site.infoWindow = new google.maps.InfoWindow({
+                site.infoWindow = new google.maps.InfoWindow ({
                     content: '<h2>' + site.title + '</h2>' + '<a href="' + site.url + '" target="_blank">' + site.url + '</a>'
                 }); 
+                
                 //listener opens infowindow and animates marker
                 google.maps.event.addListener(site.marker, 'click', self.handleThis(site.marker, site.infoWindow));
-            }
+            };
 
-            createMarkers()
+            createMarkers();
 
 // foursquare api info - trying to get working from forum post modified
 var foursquareURL = "https://api.foursquare.com/v2/venues/4b9f7a50f964a520422537e3/photos?&client_id=M5AMWSRULFRYVIAV11A40HE1DYOLQBULFQHFR1X1HJUH1UII&client_secret=WHYWWD30H2V0Z4SN5PEBLMY4MN0QL0SO3ETSWIMFBP225WI0&v=20170620&m=foursquare";
 var photo = [];
-
 
 function foursquarePhotos () {
     $.ajax({
@@ -190,8 +192,6 @@ function foursquarePhotos () {
         }
     
     });
-    
-        
  }
 foursquarePhotos();
 
