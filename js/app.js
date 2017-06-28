@@ -185,12 +185,12 @@ function foursquarePhotos () {
         url: foursquareURL,
         dataType: "jsonp",
         success: function (response) {
-            console.log(response);
+            //console.log(response);
             var photos = response.response.photos;
             var photo = photos.items[1];
             var img = photo.prefix + 'width' + photo.width + photo.suffix;
-            console.log(photos);
-            console.log(photo);
+            //console.log(photos);
+            //console.log(photo);
             var siteImage = ('<img class="siteImage" src="' + img + '">');
             site.siteImage = siteImage;
         }
@@ -206,13 +206,13 @@ self.searchMarkers = function() {
     var searchInput = self.userInput().toLowerCase();
     self.locationList.removeAll();
     self.allSites.forEach(function(site) {
-        location.marker.setVisible(false);
+        site.marker.setVisible(false);
         if(site.title.toLowerCase().indexOf(searchInput) !== -1) {
             self.locationList.push(site);
         }
 });
     self.locationList().forEach(function(site) {
-        location.marker.setVisible(true);
+        site.marker.setVisible(true);
     });
 };
 function Site(data) {
