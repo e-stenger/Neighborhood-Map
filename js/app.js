@@ -202,7 +202,7 @@ foursquarePhotos();
 
 //search filter
 self.userInput = ko.observable('');
-self.filterMarkers = function() {
+self.searchMarkers = function() {
     var searchInput = self.userInput().toLowerCase();
     self.locationList.removeAll();
     self.allSites.forEach(function(site) {
