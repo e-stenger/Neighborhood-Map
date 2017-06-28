@@ -133,22 +133,22 @@ var ViewModel = function() {
     };
 
 var lastInfoWindow = null;
-self.handleThis = function(marker, infoWindow) {
+self.handleThis = function(site, infoWindow) {
     return function() {
         if (lastInfoWindow === infoWindow) {
-            toggleBounce(marker);
+            toggleBounce(site.marker);
             infoWindow.close(map, this);
             lastInfoWindow = null;
         } else {
             if (lastInfoWindow !== null) {
                 lastInfoWindow.close(map, this);
-                toggleBounce(marker);
+                toggleBounce(site.marker);
             }
-            toggleBounce(marker);
+            toggleBounce(site.marker);
             infoWindow.open(map, this);
             lastInfoWindow = infoWindow;
         }
-
+    infoWindow.setContent(site.siteImage);
     };
 };
 // markerClick ties list item to cooresponding marker
@@ -170,7 +170,7 @@ self.allSites.forEach(function(site) {
                 }); 
                 
                 //listener opens infowindow and animates marker
-                google.maps.event.addListener(site.marker, 'click', self.handleThis(site.marker, site.infoWindow));
+                google.maps.event.addListener(site.marker, 'click', self.handleThis(site, site.infoWindow));
             };
 
             createMarkers();
@@ -185,12 +185,16 @@ function foursquarePhotos () {
         url: foursquareURL,
         dataType: "jsonp",
         success: function (response) {
-            //console.log(response);
+            console.log(response);
             var photos = response.response.photos;
-            var photo = photos.items[0];
-            //photo = ('<img class="siteimage" src="' + photoUrl + '">');
+            var photo = photos.items[1];
+            var img = photo.prefix + 'width' + photo.width + photo.suffix;
+            console.log(photos);
+            console.log(photo);
+            var siteImage = ('<img class="siteImage" src="' + img + '">');
+            site.siteImage = siteImage;
         }
-    
+
     });
  }
 foursquarePhotos();
