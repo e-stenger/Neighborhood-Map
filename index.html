@@ -10,7 +10,7 @@
 	<body>
 		<nav id="sideNav" class="nav">
 			<section id="search">
-				<input id="new-search" placeholder="Search" data-bind="textInput: userInput, event: {keyup: searchMarkers}">
+				<input id="new-search" placeholder="Filter" data-bind="textInput: userInput, event: {keyup: searchMarkers}"/>
 			</section>
 			<ul data-bind="foreach: locationList">
 				<li id="list-item" data-bind="text: title, click: $root.markerClick"></li>

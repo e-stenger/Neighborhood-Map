@@ -148,9 +148,10 @@ self.handleThis = function(site, infoWindow) {
             infoWindow.open(map, this);
             lastInfoWindow = infoWindow;
         }
-    infoWindow.setContent(site.siteImage);
+    infoWindow.setContent('<h2>' + site.title + '</h2>' + '<a href="' + site.url + '" target="_blank">' + site.url + '</a>' + site.siteImage);
     };
 };
+
 // markerClick ties list item to cooresponding marker
 self.markerClick = function(location) {
     google.maps.event.trigger(location.marker, 'click');
@@ -166,7 +167,6 @@ self.allSites.forEach(function(site) {
             var createMarkers = function() {
                 site.marker = new google.maps.Marker(markerOptions);
                 site.infoWindow = new google.maps.InfoWindow ({
-                    content: '<h2>' + site.title + '</h2>' + '<a href="' + site.url + '" target="_blank">' + site.url + '</a>'
                 }); 
                 
                 //listener opens infowindow and animates marker
@@ -202,7 +202,7 @@ foursquarePhotos();
 
 //search filter
 self.userInput = ko.observable('');
-self.searchMarkers = function() {
+self.filterMarkers = function() {
     var searchInput = self.userInput().toLowerCase();
     self.locationList.removeAll();
     self.allSites.forEach(function(site) {
