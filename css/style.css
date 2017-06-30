@@ -22,9 +22,13 @@ a {
 	font-size: 15px;
 }
 
-.siteimage {
-	width: 10%;
-	height: 10%;
+.infoWindow {
+	max-width: 300px;
+}
+
+.siteImage {
+	width: 200px;
+	height: 200px;
 }
 
 

@@ -10,7 +10,9 @@ var sites = [{
         title: 'Giza Pyramids Ticket Office and Entrance',
         lat: "29.981907",
         lng: "31.132551",
-        url: "https://en.wikipedia.org/wiki/Giza_pyramid_complex"
+        url: "https://en.wikipedia.org/wiki/Giza_pyramid_complex",
+        //venueID: "4b9f7a50f964a520422537",
+        photoID: "590adae0dd12f83664f"
     },
     {
         title: 'The Great Pyramid at Giza',
@@ -148,8 +150,8 @@ self.handleThis = function(site, infoWindow) {
             infoWindow.open(map, this);
             lastInfoWindow = infoWindow;
         }
-    infoWindow.setContent('<h2>' + site.title + '</h2>' + '<a href="' + site.url + '" target="_blank">' + site.url + '</a>' + site.siteImage);
-    };
+    infoWindow.setContent('<div class="infoWindow"><h2>' + site.title + '</h2>' + '<a href="' + site.url + '" target="_blank">' + site.url + '</a><br>' + site.siteImage + '<div>');
+   };
 };
 
 // markerClick ties list item to cooresponding marker
@@ -167,6 +169,7 @@ self.allSites.forEach(function(site) {
             var createMarkers = function() {
                 site.marker = new google.maps.Marker(markerOptions);
                 site.infoWindow = new google.maps.InfoWindow ({
+                    //content: '<h2>' + site.title + '</h2>' + '<a href="' + site.url + '" target="_blank">' + site.url + '</a>'
                 }); 
                 
                 //listener opens infowindow and animates marker
@@ -176,28 +179,31 @@ self.allSites.forEach(function(site) {
             createMarkers();
 
 // foursquare api info - trying to get working from forum post modified
-var foursquareURL = "https://api.foursquare.com/v2/venues/4b9f7a50f964a520422537e3/photos?&client_id=M5AMWSRULFRYVIAV11A40HE1DYOLQBULFQHFR1X1HJUH1UII&client_secret=WHYWWD30H2V0Z4SN5PEBLMY4MN0QL0SO3ETSWIMFBP225WI0&v=20170620&m=foursquare";
-var photo = [];
+//var foursquareURL = "https://api.foursquare.com/v2/venues/' + site.venueID + '&/photos?' + site.photoID + '&client_id=M5AMWSRULFRYVIAV11A40HE1DYOLQBULFQHFR1X1HJUH1UII&client_secret=WHYWWD30H2V0Z4SN5PEBLMY4MN0QL0SO3ETSWIMFBP225WI0&v=20170620&m=foursquare";
+var foursquareURL = "https://foursquare.com/v/great-pyramids-of-giza/4b9f7a50f964a520422537e3?openPhotoId=' + site.photoID + '&client_id=M5AMWSRULFRYVIAV11A40HE1DYOLQBULFQHFR1X1HJUH1UII&client_secret=WHYWWD30H2V0Z4SN5PEBLMY4MN0QL0SO3ETSWIMFBP225WI0&v=20170620&m=foursquare";
+    var photo = [];
 
-function foursquarePhotos () {
-    $.ajax({
+    function foursquarePhotos() {
+      $.ajax({
         async: true,
         url: foursquareURL,
         dataType: "jsonp",
-        success: function (response) {
-            //console.log(response);
-            var photos = response.response.photos;
-            var photo = photos.items[1];
-            var img = photo.prefix + 'width' + photo.width + photo.suffix;
-            //console.log(photos);
-            //console.log(photo);
-            var siteImage = ('<img class="siteImage" src="' + img + '">');
-            site.siteImage = siteImage;
+        success: function(response) {
+          console.log(response);
+          var photos = response.response.photos;
+          var photo = photos.items[1];
+          var img = photo.prefix + 'width' + photo.width + photo.suffix;
+          //console.log(photos);
+          //console.log(photo);
+          var siteImage = ('<img class="siteImage" src="' + img + '">');
+          site.siteImage = siteImage;
+        },
+        error: function(e) {
+          console.log(e);
         }
-
-    });
- }
-foursquarePhotos();
+      });
+    }
+    foursquarePhotos();
 
 
 //search filter
