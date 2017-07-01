@@ -16,19 +16,14 @@ h2 {
 	paddingtop : 10px;
 }
 
+h3 {
+	text-align: center;
+}
+
 a {
 	margin      : 0px 0 10px 0;
 	paddingtop : 10px;
 	font-size: 15px;
-}
-
-.infoWindow {
-	max-width: 300px;
-}
-
-.siteImage {
-	width: 200px;
-	height: 200px;
 }
 
 
@@ -119,3 +114,9 @@ ul {
 	font-size      : 20px;
 	color          : white;
 }
+
+#wikiLinks {
+	margin: 0px;
+	display: block;
+}
+
