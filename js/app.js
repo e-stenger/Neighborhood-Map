@@ -180,13 +180,17 @@ self.allSites.forEach(function(site) {
 
 //wikipedia api call
 var wikiElem = [];
+var siteid = site.siteid;
 
-var wikiUrl = 'https://en.wikipedia.org/w/api.php?action=query&format=json&prop=pageimages%7Cextracts&pageids=' + site.siteid + '';
+var wikiUrl = 'https://en.wikipedia.org/w/api.php?action=query&format=json&prop=pageimages%7Cextracts&exsentences=2&pageids=' + site.siteid + '';
 $.ajax(wikiUrl, {
     dataType: 'jsonp' 
 }) .done(function(error, success, data) {
     console.log(data.responseJSON.query.pages);
-    wikiElem.push('<h4>' + data.responseJSON.query.pages + '<h4>');
+    var image = [siteid].thumbnail;
+    var text = [siteid].extract;
+
+    wikiElem.push('<h4>' + image + ',' + text + '<h4>');
     createMarkers();
 })
         
