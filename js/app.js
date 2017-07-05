@@ -184,8 +184,14 @@ var wikiElem = [];
 var wikiUrl = 'https://en.wikipedia.org/w/api.php?action=query&format=json&prop=pageimages%7Cextracts&pageids=' + site.siteid + '';
 $.ajax(wikiUrl, {
     dataType: 'jsonp' 
+    data: {
+        prop: 'extracts | pageimages',
+        exchars: 100,
+        piprop: 'thumbnail'
+    },
 }) .done(function(error, success, data) {
     console.log(data.responseJSON.query.pages);
+    wikiUrl.data.push(wikiElem);
 })
    //console.log(data);
         
