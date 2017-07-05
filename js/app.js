@@ -180,8 +180,6 @@ self.allSites.forEach(function(site) {
 
 //wikipedia api call
 var wikiElem = [];
-var thumbnail = site.thumbnail;
-var extract = site.extract;
 
 var wikiUrl = 'https://en.wikipedia.org/w/api.php?action=query&format=json&prop=pageimages%7Cextracts&pageids=' + site.siteid + '';
 $.ajax(wikiUrl, {
@@ -190,8 +188,6 @@ $.ajax(wikiUrl, {
     console.log(data.responseJSON.query.pages);
 })
    //console.log(data);
-//console.log(wikiUrl);
-      //  var siteid = response[1];
         
         })
         //createMarkers();
