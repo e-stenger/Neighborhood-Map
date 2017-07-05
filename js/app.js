@@ -169,7 +169,7 @@ self.allSites.forEach(function(site) {
             var createMarkers = function() {
                 site.marker = new google.maps.Marker(markerOptions);
                 site.infoWindow = new google.maps.InfoWindow ({
-                    content: '<h2>' + site.title + '</h2>' + '<div>'+ wikiElem +'</div>', maxWidth:300
+                    content: '<h2>' + site.title + '</h2>' + '<div>' + wikiElem + '</div>'
                 }); 
                 
                 //listener opens infowindow and animates marker
@@ -184,24 +184,19 @@ var wikiElem = [];
 var wikiUrl = 'https://en.wikipedia.org/w/api.php?action=query&format=json&prop=pageimages%7Cextracts&pageids=' + site.siteid + '';
 $.ajax(wikiUrl, {
     dataType: 'jsonp' 
-    data: {
-        prop: 'extracts | pageimages',
-        exchars: 100,
-        piprop: 'thumbnail'
-    },
 }) .done(function(error, success, data) {
     console.log(data.responseJSON.query.pages);
-    wikiUrl.data.push(wikiElem);
+    wikiElem.push('<h4>' + data.responseJSON.query.pages + '<h4>');
+    createMarkers();
 })
-   //console.log(data);
         
         })
-        //createMarkers();
+        
    // }.fail(function() {
-     //   wikiElem.push('<h3>Wikipedia failed to load info for location</h3>');
+   //     wikiElem.push('<h3>Wikipedia failed to load info for location</h3>');
    // });
 
-//};
+  //};
 
 //search filter
 self.userInput = ko.observable('');
