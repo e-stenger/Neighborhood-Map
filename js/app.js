@@ -27,88 +27,66 @@ var sites = [{
         lat: "29.976000",
         lng: "31.130784",
         siteid: "1942584",
-        thumbnail: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Pyramid_of_Khafre_Giza_Egypt_in_2015_2.jpg/50px-Pyramid_of_Khafre_Giza_Egypt_in_2015_2.jpg",
-        extract: "The Pyramid of Khafre or of Chephren is the second-tallest and second-largest of the Ancient Egyptian Pyramids of Giza and the tomb of the Fourth-Dynasty pharaoh Khafre (Chefren)"
     },
     {
         title: "Great Sphinx of Giza",
         lat: "29.975300",
         lng: "31.137604",
         siteid: "245173",
-        thumbnail: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Great_Sphinx_of_Giza_May_2015.JPG/50px-Great_Sphinx_of_Giza_May_2015.JPG",
-        extract: "The Great Sphinx of Giza The Terrifying One; literally: Father of Dread), commonly referred to as the Sphinx of Giza or just the Sphinx, is a limestone statue of a reclining sphinx, a mythical creature with the body of a lion and the head of a human."
     },
     {
         title: "Pyramid of Hetepheres I",
         lat: "29.978900",
         lng: "31.136229",
         siteid: "6615670",
-        thumbnail: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Hetepheres_chair.jpg/50px-Hetepheres_chair.jpg",
-        extract: "Hetepheres I may have been a wife of pharaoh Sneferu, and the mother of King Khufu. It is possible that Hetepheres was only a minor wife of Sneferu and only rose in prominence after her son ascended the throne."
     },
     {
         title: "Khufu Ship",
         lat: "29.978000",
         lng: "31.134623",
         siteid: "4115690",
-        thumbnail: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Gizeh_Sonnenbarke_BW_2.jpg/33px-Gizeh_Sonnenbarke_BW_2.jpg",
-        extract: "The Khufu ship is an intact full-size vessel from Ancient Egypt that was sealed into a pit in the Giza pyramid complex at the foot of the Great Pyramid of Giza around 2500 BC. The ship now is preserved in the Giza Solar boat museum."
     },
     {
         title: "Giza Necropolis",
         lat: "29.977311",
         lng: "31.132520",
         siteid: "2092712",
-        thumbnail: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Giza-pyramids.JPG/50px-Giza-pyramids.JPG",
-        extract: "The Giza Plateau is a plateau that is located in Giza, Egypt. The famous Giza Necropolis is located in this geographical area, which is characterized by a sandy, desert climate and terrain with little vegetation."
     },
     {
         title: "Tomb of Hemiunu",
         lat: "29.979366",
         lng: "31.129901",
         siteid: "2260462",
-        thumbnail: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Statue-of-Hemiun.jpg/28px-Statue-of-Hemiun.jpg",
-        extract: "Hemiunu (fl. 2570 BC) is believed to be the architect of the Great Pyramid of Giza, Egypt. As vizier, Hemiunu was one the most important members of the court and responsible for all the royal works. His tomb lies close to Khufu's pyramid."
     },
     {
         title: "Mortuary Temple of Khufu",
         lat: "29.979260",
         lng: "31.135675",
         siteid: "242606",
-        thumbnail: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Khufu_CEM.jpg/33px-Khufu_CEM.jpg",
-        extract: "Khufu , is the birth name of an ancient Egyptian pharaoh, who ruled during the Fourth Dynasty in the first half of the Old Kingdom period (26th century BC). Khufu was the second pharaoh of the 4th dynasty; he followed his possible father, king Sneferu, on the throne."
     },
     {
         title: "Rock Cut Tombs",
         lat: "29.977248",
         lng: "31.129331",
         siteid: "28022377",
-        thumbnail: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Tomba_a_dado_necropoli_della_casetta_blera.jpg/50px-Tomba_a_dado_necropoli_della_casetta_blera.jpg",
-        extract: "A rock-cut tomb is a burial chamber that is cut into an existing, naturally occurring rock formation, usually along the side of a hill. It was a common form of burial for the wealthy in ancient times in several parts of the world. Important examples are found in Egypt, most notably in the town of Deir el-Medina (Seet Maat), located between the Valley of the Kings and the Valley of the Queens."
     },
     {
         title: "Valley Temple of Khafre",
         lat: "29.974790",
         lng: "31.138358",
         siteid: "29616758",
-        thumbnail: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Khafre_statue.jpg/37px-Khafre_statue.jpg",
-        extract: "Khafre Enthroned is a funerary statue of the Pharaoh Khafre, the statue was carved for the Pharaohs valley temple near the Great Sphinx, a part of the necropolis (a funerary city) used in funeral rituals."
     },
     {
         title: "Pyramid of Menkaure",
         lat: "29.972675",
         lng: "31.128523",
         siteid: "1970544",
-        thumbnail: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Cairo%2C_Gizeh%2C_Pyramid_of_Menkaure%2C_Egypt%2C_Oct_2005.jpg/50px-Cairo%2C_Gizeh%2C_Pyramid_of_Menkaure%2C_Egypt%2C_Oct_2005.jpg",
-        extract: "The Pyramid of Menkaure, located on the Giza Plateau in the southwestern outskirts of Cairo, Egypt, is the smallest of the three main Pyramids of Giza. It is thought to have been built to serve as the tomb of the fourth dynasty Egyptian Pharaoh Menkaure."
     },
     {
         title: "Pyramid of Queens",
         lat: "29.971573",
         lng: "31.127991",
         siteid: "6802892",
-        thumbnail: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Saqqarah_Ouserkaf_06.jpg/50px-Saqqarah_Ouserkaf_06.jpg",
-        extract: "Userkaf's pyramid is part of a larger mortuary complex comprising a mortuary temple, an offering chapel and a cult pyramid as well as separate pyramid and mortuary temple for Userkaf's wife, queen Neferhetepes. Userkaf's mortuary temple and cult pyramid are today completely ruined and difficult to recognize. The pyramid of the queen is no more than a mound of rubble, with its funerary chamber exposed by stone robbers."
     }
 ];
 var Location = function(data) {
@@ -205,16 +183,14 @@ var wikiElem = [];
 var thumbnail = site.thumbnail;
 var extract = site.extract;
 
-var wikiUrl = 'https://en.wikipedia.org/w/api.php?action=query&format=json&prop=' + site.thumbnail + ',' + site.extract + '&pageids=' + site.siteid + '';
+var wikiUrl = 'https://en.wikipedia.org/w/api.php?action=query&format=json&prop=pageimages%7Cextracts&pageids=' + site.siteid + '';
 $.ajax(wikiUrl, {
     dataType: 'jsonp' 
-
-})//.done(function(response) {
-//    console.log(response);
-//var siteid = site.siteid;
-//var extract = site.extract;
-//var thumbnail = site.thumbnail;
-console.log(wikiUrl);
+}) .done(function(error, success, data) {
+    console.log(data.responseJSON.query.pages);
+})
+   //console.log(data);
+//console.log(wikiUrl);
       //  var siteid = response[1];
         
         })
