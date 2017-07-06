@@ -176,31 +176,38 @@ self.allSites.forEach(function(site) {
                 google.maps.event.addListener(site.marker, 'click', self.handleThis(site.marker, site.infoWindow));
             };
 
-            createMarkers();
+            //createMarkers();
 
 //wikipedia api call
 var wikiElem = [];
 var siteid = site.siteid;
 
 var wikiUrl = 'https://en.wikipedia.org/w/api.php?action=query&format=json&prop=pageimages%7Cextracts&exsentences=2&pageids=' + site.siteid + '';
-$.ajax(wikiUrl, {
-    dataType: 'jsonp' 
-}) .done(function(error, success, data) {
-    console.log(data.responseJSON.query.pages);
-    var image = [siteid].thumbnail;
-    var text = [siteid].extract;
+    $.ajax(wikiUrl, {
+      dataType: 'jsonp'
+    }).done(function(error, success, data) {
 
-    wikiElem.push('<h4>' + image + ',' + text + '<h4>');
-    createMarkers();
-})
-        
-        })
-        
-   // }.fail(function() {
-   //     wikiElem.push('<h3>Wikipedia failed to load info for location</h3>');
-   // });
+      var obj = data.responseJSON.query.pages;
+      var key = Object.keys(obj)[0];
 
-  //};
+      //console.log(Object.keys(obj))
+
+      //console.log(obj)
+
+      var thumbnail = data.responseJSON.query.pages[key].thumbnail.source;
+      var extract = data.responseJSON.query.pages[key].extract;
+      
+       //console.log(thumbnail);
+       //console.log(extract);
+
+      wikiElem.push('<img src="' + thumbnail + '"><p>' + extract + '</p>');
+      createMarkers();
+    }).fail(function() {
+       wikiElem.push('<h3>Wikipedia failed to load info for location</h3>');
+       createMarkers();
+   });
+
+  });
 
 //search filter
 self.userInput = ko.observable('');
