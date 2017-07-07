@@ -9,9 +9,9 @@
 	</head>
 	<body>
 		<nav id="sideNav" class="nav">
-			<section id="search">
+			<header id="search">
 				<input id="new-search" placeholder="Filter" data-bind="textInput: userInput, event: {keyup: searchMarkers}"/>
-			</section>
+			</header>
 			<ul data-bind="foreach: locationList">
 				<li id="list-item" data-bind="text: title, click: $root.markerClick"></li>
 			</ul>
@@ -19,9 +19,8 @@
 		<aside>
 			<div id="header">
 				<h1>Virtual Tour of Giza</h1>
-				<a id="menu">
-					<button>Display List - Filter Search</button>
-				</a>
+				<button>Display List - Filter Search</button>
+				<a id="menu"></a>
 			</div>
 		</aside>
 		<div id="map"></div>
@@ -29,7 +28,6 @@
 		<script src="js/knockout-3.4.2.js"></script>
 		<script src="js/app.js"></script>
 		<script async defer
-		src="https://maps.googleapis.com/maps/api/js?libraries=geometry&places&key=AIzaSyCSUIf04mJlQvO6Z7u-KPuQBTMlkxCUv-M&v=3&callback=initMap"onerror="mapError()">
-		</script>
+		src="https://maps.googleapis.com/maps/api/js?libraries=geometry&places&key=AIzaSyCSUIf04mJlQvO6Z7u-KPuQBTMlkxCUv-M&v=3&callback=initMap" onerror="mapError()"></script>
 	</body>
 </html>
