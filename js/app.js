@@ -1,12 +1,12 @@
 //open and close sideNav when explore button is clicked from hamburger menu notes Udacity
-    var menu = document.querySelector('#menu');
-    var main = document.querySelector('aside');
-    var drawer = document.querySelector('.nav');
-    main.addEventListener('click', function() {
+var menu = document.querySelector('#menu');
+var main = document.querySelector('aside');
+var drawer = document.querySelector('.nav');
+main.addEventListener('click', function() {
     drawer.classList.toggle('open');
-    });
+});
 //locations array, list of sites
-    var sites = [{
+var sites = [{
         title: "Giza Pyramid Complex Tickets and Entrance",
         lat: "29.981907",
         lng: "31.132551",
@@ -46,7 +46,7 @@
         lat: "29.978000",
         lng: "31.134623",
         siteid: "4115690",
-        url : "https://en.wikipedia.org/wiki/Khufu_ship"
+        url: "https://en.wikipedia.org/wiki/Khufu_ship"
     },
     {
         title: "Giza Necropolis",
@@ -97,87 +97,87 @@
         siteid: "6802892",
         url: "https://sv.wikipedia.org/wiki/Pyramids_of_Queens"
     }
-    ];
-    var Location = function(data) {
-        this.title = data.title;
-        this.lat = data.lat;
-        this.lng = data.lng;
-        this.marker = data.marker;
-    };
+];
+var Location = function(data) {
+    this.title = data.title;
+    this.lat = data.lat;
+    this.lng = data.lng;
+    this.marker = data.marker;
+};
 //init map
-    var map;
+var map;
 // map fail function
-    var mapError = function() {
-        alert('MAP FAILED TO LOAD, please refresh and/or check console for error');
-    };
+var mapError = function() {
+    alert('MAP FAILED TO LOAD, please refresh and/or check console for error');
+};
 //load map with starting coordinates and properties
-    function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: {
-                lat: 29.972000,
-                lng: 31.133000
-           },
-            zoom: 15,
-            mapTypeId: 'satellite',
-            mapTypeControl: false,
-        });
-        ko.applyBindings(new ViewModel());
-    }
+function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: {
+            lat: 29.972000,
+            lng: 31.133000
+        },
+        zoom: 15,
+        mapTypeId: 'satellite',
+        mapTypeControl: false,
+    });
+    ko.applyBindings(new ViewModel());
+}
 
 //viewmodel
-    var ViewModel = function() {
-        var self = this;
-//markers array
-        self.allSites = [];
-        sites.forEach(function(site) {
+var ViewModel = function() {
+    var self = this;
+    //markers array
+    self.allSites = [];
+    sites.forEach(function(site) {
         self.allSites.push(site);
     });
-//ko.obseverable markers
-        self.locationList = ko.observableArray([]);
-        sites.forEach(function(site) {
+    //ko.obseverable markers
+    self.locationList = ko.observableArray([]);
+    sites.forEach(function(site) {
         self.locationList.push(site);
     });
-//toggleBounce, handleThis, markerClick function credit documentation and forum (modified)
-        var toggleBounce = function(marker) {
-            marker.setAnimation(google.maps.Animation.BOUNCE);
-            setTimeout(function() {
+    //toggleBounce, handleThis, markerClick function credit documentation and forum (modified)
+    var toggleBounce = function(marker) {
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+        setTimeout(function() {
             marker.setAnimation(null);
-            }, 1400);
-        };
+        }, 1400);
+    };
 
-        var lastInfoWindow = null;
-        self.handleThis = function(marker, infoWindow) {
-            return function() {
-                if (lastInfoWindow === infoWindow) {
-                    toggleBounce(marker);
-                    infoWindow.close(map, this);
-                    lastInfoWindow = null;
-                } else {
-                    if (lastInfoWindow !== null) {
+    var lastInfoWindow = null;
+    self.handleThis = function(marker, infoWindow) {
+        return function() {
+            if (lastInfoWindow === infoWindow) {
+                toggleBounce(marker);
+                infoWindow.close(map, this);
+                lastInfoWindow = null;
+            } else {
+                if (lastInfoWindow !== null) {
                     lastInfoWindow.close(map, this);
                     toggleBounce(marker);
                 }
-                    toggleBounce(marker);
-                    infoWindow.open(map, this);
-                    lastInfoWindow = infoWindow;
-                }
-            };
+                toggleBounce(marker);
+                infoWindow.open(map, this);
+                lastInfoWindow = infoWindow;
+            }
         };
+    };
 
-// markerClick ties list item to cooresponding marker
-        this.markerClick = function(location) {
-            google.maps.event.trigger(location.marker, 'click');
+    // markerClick ties list item to cooresponding marker
+    this.markerClick = function(location) {
+        google.maps.event.trigger(location.marker, 'click');
+    };
+
+    //create marker and infowindow
+    self.allSites.forEach(function(site) {
+        var markerOptions = {
+            map: map,
+            position: {
+                lat: parseFloat(site.lat),
+                lng: parseFloat(site.lng)
+            },
         };
-
-//create marker and infowindow
-        self.allSites.forEach(function(site) {
-            var markerOptions = {
-                map: map,
-                position: {
-                    lat: parseFloat(site.lat),
-                    lng: parseFloat(site.lng)
-                },
-            };
 
         var createMarkers = function() {
             site.marker = new google.maps.Marker(markerOptions);
@@ -185,20 +185,20 @@
                 content: '<h2>' + site.title + '</h2>' + '<div>' + wikiElem + '</div>' + '<h2>Read More</h2>' + '<a href="' + site.url + '" target="_blank">' + site.url + '</a><br>'
             });
 
-//listener opens infowindow and animates marker
+            //listener opens infowindow and animates marker
             google.maps.event.addListener(site.marker, 'click', self.handleThis(site.marker, site.infoWindow));
-            };
+        };
 
         //wikipedia api call credit help to @Karol 1:1 meeting
         var wikiElem = [];
         var siteid = site.siteid;
 
         var wikiUrl = 'https://en.wikipedia.org/w/api.php?action=query&format=json&prop=pageimages%7Cextracts&exchars=750&pageids=' + site.siteid + '';
-            $.ajax(wikiUrl, {
-                dataType: 'jsonp'
-            }).done(function(error, success, data) {
-                var obj = data.responseJSON.query.pages;
-                var key = Object.keys(obj)[0];
+        $.ajax(wikiUrl, {
+            dataType: 'jsonp'
+        }).done(function(error, success, data) {
+            var obj = data.responseJSON.query.pages;
+            var key = Object.keys(obj)[0];
             var thumbnail = data.responseJSON.query.pages[key].thumbnail.source;
             var extract = data.responseJSON.query.pages[key].extract;
             wikiElem.push('<img src="' + thumbnail + '"><p>' + extract + '</p>');
@@ -210,33 +210,33 @@
 
     });
 
-//search filter
-        self.userInput = ko.observable('');
-        self.searchMarkers = function() {
-            var searchInput = self.userInput().toLowerCase();
-            self.locationList.removeAll();
-            self.allSites.forEach(function(site) {
-                site.marker.setVisible(false);
-                if (site.title.toLowerCase().indexOf(searchInput) !== -1) {
-                    self.locationList.push(site);
-                }
-            });
-            self.locationList().forEach(function(site) {
-                site.marker.setVisible(true);
-            });
-        };
+    //search filter
+    self.userInput = ko.observable('');
+    self.searchMarkers = function() {
+        var searchInput = self.userInput().toLowerCase();
+        self.locationList.removeAll();
+        self.allSites.forEach(function(site) {
+            site.marker.setVisible(false);
+            if (site.title.toLowerCase().indexOf(searchInput) !== -1) {
+                self.locationList.push(site);
+            }
+        });
+        self.locationList().forEach(function(site) {
+            site.marker.setVisible(true);
+        });
+    };
 
-        function Site(data) {
-            this.title = data.title;
-            this.lat = data.lat;
-            this.lng = data.lng;
-            this.url = data.url;
-            this.marker = null;
-        }
-        this.currentLocation = ko.observable();
-        this.setLocation = function(site) {
-            self.currentLocation(site);
-        };
-     };
+    function Site(data) {
+        this.title = data.title;
+        this.lat = data.lat;
+        this.lng = data.lng;
+        this.url = data.url;
+        this.marker = null;
+    }
+    this.currentLocation = ko.observable();
+    this.setLocation = function(site) {
+        self.currentLocation(site);
+    };
+};
 
 
